@@ -1,0 +1,162 @@
+[
+  {
+    "released_at" : "2017-07-07 19:00:00",
+    "id" : 877,
+    "author" : "Brian Moakley",
+    "name" : "Git: Third Party Dependencies with Submodules",
+    "description" : "In this screencast, you'll learn how to add and remove third party dependencies by way of Git submodules.",
+    "duration" : 325
+  },
+  {
+    "released_at" : "2017-07-03 20:00:00",
+    "id" : 852,
+    "author" : "Brian Moakley",
+    "name" : "Git: Dependency Management Using Submodules",
+    "description" : "In this screencast, you'll learn how to incorporate dependencies into your app using git submodules.",
+    "duration" : 324
+  },
+  {
+    "released_at" : "2017-06-22 13:00:00",
+    "id" : 851,
+    "author" : "Brian Moakley",
+    "name" : "Charles Proxy: Troubleshooting Your App",
+    "description" : "In this screencast, you'll learn how to use Charles Proxy to investigate third party apps and even debug your own.",
+    "duration" : 402
+  },
+  {
+    "released_at" : "2017-06-19 18:00:00",
+    "id" : 839,
+    "author" : "Ray Wenderlich",
+    "name" : "iOS 11: Drag and Drop, with Multiple Data Representations and Custom Views",
+    "description" : "In this screencast, you'll learn how to use iOS 11 drag and drop to export your data using many different representations, and how to add drag and drop into custom views in your app.",
+    "duration" : 434
+  },
+  {
+    "released_at" : "2017-06-29 13:00:00",
+    "id" : 838,
+    "author" : "Sam Davies",
+    "name" : "Scripting in Swift: Managing Dependencies",
+    "description" : "Enhance the power of your Swift scripts through using 1st and 3rd party dependencies. This screencast will first show you how you can manage your own code via building modules, before moving on to see one way you can use 3rd-party dependencies within your scripts. By the end of the screencast you'll have discovered how you can offer a rich CLI experience through the Commander cocoa pod.",
+    "duration" : 550
+  },
+  {
+    "released_at" : "2017-06-26 19:00:00",
+    "id" : 837,
+    "author" : "Sam Davies",
+    "name" : "Scripting in Swift: Writing a Script",
+    "description" : "Despite the fact that Swift is a compiled language, you can use it to write handy scripts. Scripts written in the language you love, with the full force of the macOS frameworks behind you! Watch this screencast and you'll discover quite how easy it is to get going.",
+    "duration" : 522
+  },
+  {
+    "released_at" : "2017-06-15 13:00:00",
+    "id" : 836,
+    "author" : "Brian Moakley",
+    "name" : "Charles Proxy: Getting Started",
+    "description" : "In this screencast, you will learn how to setup Charles Proxy on both macOS and iOS.",
+    "duration" : 267
+  },
+  {
+    "released_at" : "2017-06-12 19:00:00",
+    "id" : 828,
+    "author" : "Catie Catterwaul",
+    "name" : "Charts: Format & Style",
+    "description" : "In this screencast, you'll learn how to use the Charts framework to control the appearance of a line chart and bar chart.",
+    "duration" : 415
+  },
+  {
+    "released_at" : "2017-06-08 13:00:00",
+    "id" : 827,
+    "author" : "Brian Moakley",
+    "name" : "IGListKit: Multiple Sections and Updates",
+    "description" : "In this video, you'll learn how to use multiple section controllers and how to update your list when your data has changed.",
+    "duration" : 453
+  },
+  {
+    "released_at" : "2017-06-07 20:00:00",
+    "id" : 826,
+    "author" : "Ray Wenderlich",
+    "name" : "iOS 11: Drag and Drop with Table and Collection Views",
+    "description" : "In this screencast, you'll learn the basics of adding iOS 11's new drag and drop support into your iOS apps, starting with table and collection views.",
+    "duration" : 717
+  },
+  {
+    "released_at" : "2017-05-29 19:00:00",
+    "id" : 822,
+    "author" : "Jessy Catterwaul",
+    "name" : "Charts: Plotting Data",
+    "description" : "In this screencast, you'll learn how to use the Charts framework to create a line chart and bar chart.",
+    "duration" : 331
+  },
+  {
+    "released_at" : "2017-05-25 19:00:00",
+    "id" : 814,
+    "author" : "Brian Moakley",
+    "name" : "IGListKit: Getting Started",
+    "description" : "IGListKit is a list building framework that was created to make feature-creep and massive-view-controllers a thing of the past when working with UICollectionView. In this screencast, you'll learn how to use it.",
+    "duration" : 506
+  },
+  {
+    "released_at" : "2017-05-22 19:00:00",
+    "id" : 812,
+    "author" : "Sam Davies",
+    "name" : "Using Protocol Buffers in Swift",
+    "description" : "Protocol Buffers are a data interchange format created by Google that focus on efficiency, both in data size and serialisation cost. Think super-efficient JSON or XML. Apple created a Swift plugin for the protobuf compiler, and in this screencast you can see how easy it is to start using protobufs in your Swift-based apps.",
+    "duration" : 536
+  },
+  {
+    "released_at" : "2017-05-11 19:00:00",
+    "id" : 804,
+    "author" : "Brian Moakley",
+    "name" : "Submitting Your App with Fastlane",
+    "description" : "In this screencast, you'll learn how to combine all your other lanes to create a general purpose lane that will not only build, provision and take screenshots or your app but also submit it to the app store.",
+    "duration" : 372
+  },
+  {
+    "released_at" : "2017-05-03 19:00:00",
+    "id" : 793,
+    "author" : "Brian Moakley",
+    "name" : "Taking Screenshots with Fastlane",
+    "description" : "In this screencast, you'll learn how to automate the process of taking screenshots in multiple languages.",
+    "duration" : 300
+  },
+  {
+    "released_at" : "2017-04-26 19:00:00",
+    "id" : 792,
+    "author" : "Brian Moakley",
+    "name" : "Provisioning with fastlane",
+    "description" : "In this screencast, you'll learn how to include Fastlane in your project and how you can create provisioning profiles with it.",
+    "duration" : 484
+  },
+  {
+    "released_at" : "2017-04-19 19:00:00",
+    "id" : 754,
+    "author" : "Brian Moakley",
+    "name" : "Parsing JSON Using Gloss",
+    "description" : "In this screencast, you'll learn to parse JSON using the Gloss library.",
+    "duration" : 308
+  },
+  {
+    "released_at" : "2017-04-12 19:00:00",
+    "id" : 750,
+    "author" : "Brian Moakley",
+    "name" : "Parsing JSON Using Swift",
+    "description" : "In this screencast, you'll learn how to parse JSON files into Swift using native methods.",
+    "duration" : 323
+  },
+  {
+    "released_at" : "2017-04-05 19:00:00",
+    "id" : 735,
+    "author" : "Brian Moakley",
+    "name" : "PromiseKit: Background Promises",
+    "description" : "In this screencast, you'll learn how to take your promises and have them run in the background. You'll also learn how to have promises always run and how to run them after a predetermined amount of time.",
+    "duration" : 354
+  },
+  {
+    "released_at" : "2017-03-22 19:00:00",
+    "id" : 705,
+    "author" : "Brian Moakley",
+    "name" : "Getting Started with PromiseKit",
+    "description" : "This screencast covers the basics of using PromiseKit and what advantages it can bring to you code. Hint: If you are doing asynchronous coding - a lot!",
+    "duration" : 463
+  }
+]
