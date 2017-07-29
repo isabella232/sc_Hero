@@ -31,31 +31,30 @@
 import Foundation
 
 class VideoStore {
-  
-  private static let dateFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-    return formatter
-  }()
-  
-  static let sharedStore: VideoStore = {
-    var playlist = [Video]()
-    if let url = Bundle.main.url(forResource: "screencasts", withExtension: "json") {
+  static let shared = VideoStore(
+    playlist: {
+      guard let url = Bundle.main.url(forResource: "screencasts", withExtension: "json")
+      else {return []}
+      
       do {
         let data = try Data(contentsOf: url)
+        
         let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .formatted(VideoStore.dateFormatter)
-        playlist = try decoder.decode([Video].self, from: data)
-      } catch let error {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        decoder.dateDecodingStrategy = .formatted(dateFormatter)
+        
+        return try decoder.decode([Video].self, from: data)
+      } catch {
         print(error)
+        return []
       }
-    }
-    return VideoStore(playlist: playlist)
-  }()
+    }()
+  )
   
-  var playlist: [Video]
+  let playlist: [Video]
   
-  init(playlist: [Video]) {
+  private init(playlist: [Video]) {
     self.playlist = playlist
   }
 }

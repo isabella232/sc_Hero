@@ -49,17 +49,18 @@ class PlaylistViewController: UITableViewController {
   }
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    guard let identifier = segue.identifier,
-      identifier == PlaylistViewController.showVideoSegueIdentifer,
+    guard
+      segue.identifier == PlaylistViewController.showVideoSegueIdentifer,
       let destination = segue.destination as? VideoViewController,
       let indexPath = tableView.indexPathForSelectedRow
-      else { return }
+    else { return }
+    
     destination.dateFormatter = dateFormatter
     destination.timeFormatter = timeFormatter
     destination.video = playlist[indexPath.row]
   }
   
-  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  override func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
     return playlist.count
   }
   

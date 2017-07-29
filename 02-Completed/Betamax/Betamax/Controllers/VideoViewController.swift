@@ -54,7 +54,7 @@ class VideoViewController: UIViewController {
     super.viewDidLoad()
     configureVideo()
     view.heroModifiers = [.useLayerRenderSnapshot]
-    let recognizer = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(handlePan))
+    let recognizer = UIScreenEdgePanGestureRecognizer( target: self, action: #selector(handlePan) )
     recognizer.edges = .left
     view.addGestureRecognizer(recognizer)
   }
@@ -76,6 +76,7 @@ class VideoViewController: UIViewController {
   
   private func configureVideo() {
     guard let video = video else { return }
+    
     bannerImageView.image = UIImage(named: "\(video.id)-banner")
     bannerImageView.heroID = "\(video.id)-image"
     if let dateFormatter = dateFormatter {

@@ -39,7 +39,7 @@ class VideoStore {
   }()
   
   static let sharedStore: VideoStore = {
-    var playlist = [Video]()
+    var playlist: [Video] = []
     if let url = Bundle.main.url(forResource: "screencasts", withExtension: "json") {
       do {
         let data = try Data(contentsOf: url)
