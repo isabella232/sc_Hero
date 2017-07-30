@@ -32,11 +32,17 @@ import UIKit
 
 class PlaylistViewController: UITableViewController {
   
-  static let showVideoSegueIdentifer = "ShowVideo"
+  private static let showVideoSegueIdentifer = "ShowVideo"
   
-  let playlist = VideoStore.shared.playlist
-  let dateFormatter = DateFormatter()
-  let timeFormatter: DateComponentsFormatter = {
+  private let playlist = VideoStore.shared.playlist
+  
+  private let dateFormatter: DateFormatter = {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "MMM dd, yyyy"
+    return dateFormatter
+  }()
+  
+  private let timeFormatter: DateComponentsFormatter = {
     let timeFormatter = DateComponentsFormatter()
     timeFormatter.allowedUnits = [.minute, .second]
     timeFormatter.unitsStyle = .abbreviated
@@ -46,19 +52,20 @@ class PlaylistViewController: UITableViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     tableView.contentInset = UIEdgeInsets(top: 4, left: 0, bottom: 4, right: 0)
-    dateFormatter.dateFormat = "MMM dd, yyyy"
   }
   
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+  override func prepare(for segue: UIStoryboardSegue, sender _: Any?) {
     guard
       segue.identifier == PlaylistViewController.showVideoSegueIdentifer,
       let destination = segue.destination as? VideoViewController,
       let indexPath = tableView.indexPathForSelectedRow
-    else { return }
+    else {return}
     
-    destination.dateFormatter = dateFormatter
-    destination.timeFormatter = timeFormatter
-    destination.video = playlist[indexPath.row]
+    destination.injectDependencies(
+      video: playlist[indexPath.row],
+      dateFormatter: dateFormatter,
+      timeFormatter: timeFormatter
+    )
   }
   
   override func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
@@ -67,9 +74,11 @@ class PlaylistViewController: UITableViewController {
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: VideoCell.identifier, for: indexPath) as! VideoCell
-    cell.dateFormatter = dateFormatter
-    cell.timeFormatter = timeFormatter
-    cell.video = playlist[indexPath.row]
+    cell.injectDependencies(
+      video: playlist[indexPath.row],
+      dateFormatter: dateFormatter,
+      timeFormatter: timeFormatter
+    )
     return cell
   }
 }

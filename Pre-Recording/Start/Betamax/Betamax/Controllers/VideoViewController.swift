@@ -41,28 +41,33 @@ class VideoViewController: UIViewController {
   @IBOutlet private var authorNameLabel: UILabel!
   @IBOutlet private var descriptionLabel: UILabel!
   
-  var video: Video?
-  weak var dateFormatter: DateFormatter?
-  weak var timeFormatter: DateComponentsFormatter?
+  func injectDependencies(
+    video: Video,
+    dateFormatter: DateFormatter,
+    timeFormatter: DateComponentsFormatter
+  ) {
+    configureVideo = {
+      [ unowned self,
+        unowned dateFormatter,
+        unowned timeFormatter
+      ] in
+      
+      self.bannerImageView.image = UIImage(named: "\(video.id)-banner")
+      self.releasedAtLabel.text = dateFormatter.string(from: video.releasedAt)
+      self.durationLabel.text = timeFormatter.string( from: TimeInterval(video.duration) )
+      
+      self.nameLabel.text = video.name
+      self.avatarView.image = UIImage(named: video.author)
+      self.authorNameLabel.text = video.author
+      self.descriptionLabel.text = video.description
+    }
+  }
+  
+  private var configureVideo: ( () -> Void )?
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    configureVideo()
-  }
-  
-  private func configureVideo() {
-    guard let video = video else { return }
-    bannerImageView.image = UIImage(named: "\(video.id)-banner")
-    if let dateFormatter = dateFormatter {
-      releasedAtLabel.text = dateFormatter.string(from: video.releasedAt)
-    }
-    if let timeFormatter = timeFormatter {
-      durationLabel.text = timeFormatter.string(from: TimeInterval(video.duration))
-    }
-    nameLabel.text = video.name
-    avatarView.image = UIImage(named: video.author)
-    authorNameLabel.text = video.author
-    descriptionLabel.text = video.description
+    configureVideo?()
   }
 }
 

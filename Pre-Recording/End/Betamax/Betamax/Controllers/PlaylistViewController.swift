@@ -35,7 +35,7 @@ class PlaylistViewController: UITableViewController {
   
   private static let showVideoSegueIdentifer = "ShowVideo"
   
-  let playlist = VideoStore.shared.playlist
+  private let playlist = VideoStore.shared.playlist
   
   private let dateFormatter: DateFormatter = {
     let dateFormatter = DateFormatter()
