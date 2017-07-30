@@ -222,7 +222,7 @@ Within the `began` state, I use a standard method on `UINavigationController` to
 navigationController?.popViewController(animated: true)
 ```
 
-To be able to update Hero with the progress of the gesture, I first need to know how far the user has moved their finger since the gesture began. For that I'll use `translation(in:)`, which is a method declared on `UIPanGestureRecognizer` that returns the total x and y translations over the lifetime of the gesture. You can provide a view if you want to use a different coordinate system, but in this case I simply pass `nil` to use the current coordinate system.
+To be able to update Hero with the progress of the gesture, I first need to know how far the user has moved their finger since the gesture began. For that I'll use `translation(in: View)`, which is a method declared on `UIPanGestureRecognizer` that returns the total x and y translations over the lifetime of the gesture. You can provide a view if you want to use a different coordinate system, but in this case I simply pass `nil` to use the current coordinate system.
 
 ```
 let translation = recognizer.translation(in: nil)
