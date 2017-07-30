@@ -29,7 +29,6 @@
  */
 
 import UIKit
-import Hero
 
 class VideoCell: UITableViewCell {
   
@@ -40,20 +39,26 @@ class VideoCell: UITableViewCell {
   @IBOutlet private var releasedAtLabel: UILabel!
   @IBOutlet private var durationLabel: UILabel!
   
-  weak var dateFormatter: DateFormatter?
-  weak var timeFormatter: DateComponentsFormatter?
-  var video: Video? {
-    didSet {
-      guard let video = video else { return }
-      thumbnailImageView.image = UIImage(named: "\(video.id)-thumb")
-      thumbnailImageView.heroID = "\(video.id)-image"
-      nameLabel.text = video.name
-      if let dateFormatter = dateFormatter {
-        releasedAtLabel.text = dateFormatter.string(from: video.releasedAt)
-      }
-      if let timeFormatter = timeFormatter {
-        durationLabel.text = timeFormatter.string(from: TimeInterval(video.duration))
-      }
-    }
+  func injectDependencies(
+    video: Video,
+    dateFormatter: DateFormatter,
+    timeFormatter: DateComponentsFormatter
+  ) {
+    thumbnailImageView.image = UIImage(named: "\(video.id)-thumb")
+    thumbnailImageView.heroID = "\(video.id)-image"
+    
+    nameLabel.text = video.name
+    releasedAtLabel.text = dateFormatter.string(from: video.releasedAt)
+    durationLabel.text = timeFormatter.string( from: TimeInterval(video.duration) )
   }
 }
+
+
+
+
+
+
+
+
+
+

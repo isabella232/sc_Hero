@@ -28,15 +28,18 @@
  * THE SOFTWARE.
  */
 
-import UIKit
 import Hero
+import UIKit
 
 class VideoViewController: UIViewController {
   
   @IBOutlet private var bannerImageView: UIImageView!
   @IBOutlet private var playButtonImageView: UIImageView! {
     didSet {
-      playButtonImageView.heroModifiers = [.beginWith(.opacity(Float(0))), .fade]
+      playButtonImageView.heroModifiers = [
+        .beginWith( .opacity(0 as Float) ),
+        .fade
+      ]
     }
   }
   @IBOutlet private var releasedAtLabel: UILabel!
@@ -46,14 +49,36 @@ class VideoViewController: UIViewController {
   @IBOutlet private var authorNameLabel: UILabel!
   @IBOutlet private var descriptionLabel: UILabel!
   
-  var video: Video?
-  weak var dateFormatter: DateFormatter?
-  weak var timeFormatter: DateComponentsFormatter?
+  func injectDependencies(
+    video: Video,
+    dateFormatter: DateFormatter,
+    timeFormatter: DateComponentsFormatter
+  ) {
+    configureVideo = {
+      [ unowned self,
+        unowned dateFormatter,
+        unowned timeFormatter
+      ] in
+      
+      self.bannerImageView.image = UIImage(named: "\(video.id)-banner")
+      self.bannerImageView.heroID = "\(video.id)-image"
+      self.releasedAtLabel.text = dateFormatter.string(from: video.releasedAt)
+      self.durationLabel.text = timeFormatter.string( from: TimeInterval(video.duration) )
+
+      self.nameLabel.text = video.name
+      self.avatarView.image = UIImage(named: video.author)
+      self.authorNameLabel.text = video.author
+      self.descriptionLabel.text = video.description
+    }
+  }
+  
+  private var configureVideo: ( () -> Void )?
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    configureVideo()
+    configureVideo?()
     view.heroModifiers = [.useLayerRenderSnapshot]
+    
     let recognizer = UIScreenEdgePanGestureRecognizer( target: self, action: #selector(handlePan) )
     recognizer.edges = .left
     view.addGestureRecognizer(recognizer)
@@ -61,34 +86,42 @@ class VideoViewController: UIViewController {
   
   @objc private func handlePan(recognizer: UIScreenEdgePanGestureRecognizer) {
     switch recognizer.state {
-    case .began:
-      navigationController?.popViewController(animated: true)
+    case .possible, .failed: break
+    case .began: navigationController?.popViewController(animated: true)
     case .changed:
-      let translation = recognizer.translation(in: nil)
-      let progress = (translation.x / 2) / view.bounds.width
+      let progress =
+        recognizer.translation(in: nil).x / 2
+        / view.bounds.width
       Hero.shared.update(progress)
-    case .cancelled:
-      Hero.shared.cancel()
-    default:
-      Hero.shared.finish()
+      
+    case .ended: Hero.shared.finish()
+    case .cancelled: Hero.shared.cancel()
     }
-  }
-  
-  private func configureVideo() {
-    guard let video = video else { return }
-    
-    bannerImageView.image = UIImage(named: "\(video.id)-banner")
-    bannerImageView.heroID = "\(video.id)-image"
-    if let dateFormatter = dateFormatter {
-      releasedAtLabel.text = dateFormatter.string(from: video.releasedAt)
-    }
-    if let timeFormatter = timeFormatter {
-      durationLabel.text = timeFormatter.string(from: TimeInterval(video.duration))
-    }
-    nameLabel.text = video.name
-    avatarView.image = UIImage(named: video.author)
-    authorNameLabel.text = video.author
-    descriptionLabel.text = video.description
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
