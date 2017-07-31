@@ -10,7 +10,6 @@ Aside from you _just_ mentioning them…
 
 Hero is built around the concept of Keynote's Magic Move feature—you simply create relationships between source and destination views and then Hero will automagically transition them from their old state to their new state. But it's not limited to just matched views, as you can also provide custom animations for unmatched views and these'll run in parallel to those handled automatically.
 
-**Catie**  
 But enough with the pleasantries! The easiest—and most enjoyable!—way to understand Hero is to begin using it.
 
 **Jessy**  
@@ -85,7 +84,7 @@ Behind the scenes, `useLayerRenderSnapshot ` employs `CALayer`'s `render(in: Con
 **Jessy**  
 A modifier is simply a type method or property defined on `HeroModifier`—there are all sorts of modifiers you can use, so I highly recommend you check out HeroModifier.swift in the framework's source to see what's available.
 
-I need to make sure both the source and the destination views are using this particualr technique, so I'll make the same changes to VideoViewController.swift…
+I need to make sure both the source and the destination views are using this particular technique, so I'll make the same changes to VideoViewController.swift…
 
 # *`VideoViewController.swift`*
 > add the following `import` statement
@@ -170,7 +169,7 @@ The easiest way to resolve this issue is to hide the play button until the trans
 **Jessy**  
 We have to instantiate the value in this way because Hero provides two overloads of `opacity()`—one for _CG_`Float` and one for `Float`—but unfortunately the Swift compiler can't determine which to use, hence the manual disambiguation.
 
-Hero only takes `beginWith`-modifiers into account when used alongside an animation, so I'll add the `.fade` animation modifier to the array as well. 
+Hero only takes `beginWith`-modifiers into account when used alongside an animation, so I'll add the `fade` animation modifier to the array as well. 
 
 ```
 .fade
@@ -194,7 +193,7 @@ There's a lot more to Hero than we've been able to demonstrate in this single sc
 > at [github.com/lkzhao/Hero](github.com/lkzhao/Hero) 
 
 **Catie**  
-Thanks for watching. Jessy and I really look forward to seeing all the elegant and engaging transitions you all build into your apps!
+Thanks for watching. Jessy and I really look forward to seeing all the elegant and engaging transitions you all build into _your_ apps!
 
 
 *** 
