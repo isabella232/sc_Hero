@@ -1,0 +1,6 @@
+platform :ios, '11.0'
+
+target 'Betamax' do
+  use_frameworks!
+  pod 'Hero', '1.0.0-alpha.1'
+end
